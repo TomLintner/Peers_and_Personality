@@ -1,0 +1,4 @@
+Raw survey responses and sociometric matrices are not distributed with this bundle.
+
+Scripts 01 to 11 expect these files here. Scripts 30 to 71 need only the posterior chains in
+output/chains/ and so can be run without the raw data.
