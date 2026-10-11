@@ -25,7 +25,6 @@ not run and the rest will.
 ```
 work/objects/   1.2 MB, 10 files  - built siena objects, sienaBayes setups, siena08 results
 work/chains/    385 MB, 29 files  - bayes12h_stage1-9.rds, ozbayes_stage1-20.rds
-work/mom/       empty             - the converged method-of-moments fits, see below
 data_raw/       empty             - raw survey files and sociometric matrices, not distributed
 output/         created on first run
 ```
@@ -40,15 +39,6 @@ and run in seconds to minutes.
 because classroom matrices identify individuals within classes of 13 to 32 students even without
 names, and consent did not cover public release. Available under a data-use agreement; see the
 article's Open Science Statement. Scripts 01 to 11 need them.
-
-**Not included: the two method-of-moments fits.** `gacr_final_ans.rds` and `oz_final_ans.rds` are
-485 MB and 339 MB, because `n3 = 40000` stores the Phase 3 statistics by iteration. Script 12
-(goodness of fit) expects them in `work/mom/`; scripts 10 and 11 regenerate them from the raw data.
-They hold no individual-level data and can be added to `work/mom/` if wanted.
-
-**Two intermediates were never persisted:** `gacr_cfa2.rds` (written by 02, read by 03) and
-`oz_bins.rds` (written by 04, read by 06) existed only in a temporary directory. Running 01 to 06 in
-order recreates them; the saved copies are gone.
 
 ## Run order
 
