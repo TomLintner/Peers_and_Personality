@@ -23,13 +23,13 @@ not run and the rest will.
 ## Data and what is included
 
 ```
-work/objects/   1.2 MB, 10 files  - built siena objects, sienaBayes setups, siena08 results
+work/objects/   156 KB, 3 files   - sienaBayes setups (data stripped) and the siena08 results
 work/chains/    385 MB, 29 files  - bayes12h_stage1-9.rds, ozbayes_stage1-20.rds
 data_raw/       empty             - raw survey files and sociometric matrices, not distributed
 output/         created on first run
 ```
 
-**Included: the posterior chains.** `work/chains/` holds the 29 sienaBayes stage files, 2,650 draws
+**Included: the posterior chains and the stripped setups.** `work/chains/` holds the 29 sienaBayes stage files, 2,650 draws
 for Sample 1 across nine stages and 6,000 for Sample 2 across twenty. These are parameter draws, not
 individual-level data, and they are enough to regenerate every reported table and figure without
 re-estimating. Scripts 30, 31, 50, 60, 61, 62, 63, 64 and 65 need only these plus `work/objects/`,
@@ -39,6 +39,11 @@ and run in seconds to minutes.
 because classroom matrices identify individuals within classes of 13 to 32 students even without
 names, and consent did not cover public release. Available under a data-use agreement; see the
 article's Open Science Statement. Scripts 01 to 11 need them.
+
+
+**Two intermediates were never persisted:** `gacr_cfa2.rds` (written by 02, read by 03) and
+`oz_bins.rds` (written by 04, read by 06) existed only in a temporary directory. Running 01 to 06 in
+order recreates them; the saved copies are gone.
 
 ## Run order
 
@@ -126,3 +131,6 @@ tie-count weights, bootstrapped across classes, class p values combined by Stouf
 | `65_figures_sample2.R` | Sample 2 trace and posterior figures |
 | `70_supplemental_descriptives.R` | Tables S1 and S2 |
 | `71_supplemental_document.R` | `Supplemental_Material.docx`, Tables S1–S6 and Figures S1–S6 |
+**The setups are stripped.** `gacr_bayes_setup2.rds` and `oz_bayes_setup.rds` keep the effects
+object, the priors, and per-class names and sizes, which are in Table 2. Their `$grp` data component
+is removed, so the reporting scripts run but the build stages (01 to 11) need the restricted data.

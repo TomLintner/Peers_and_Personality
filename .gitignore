@@ -1,0 +1,10 @@
+# Posterior chains and the stripped setups ARE tracked: see README.
+# What is excluded is anything carrying individual-level data, plus run outputs.
+output/
+work/mom/
+data_raw/*
+!data_raw/README*
+
+.Rhistory
+.RData
+.Rproj.user/
